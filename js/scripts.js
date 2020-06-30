@@ -34,6 +34,7 @@ function check_mouse_position(e) {
     diff.y = e.clientY - start.y;
 
     if(e.type === 'touchmove'){
+        e.preventDefault();
         console.log(e.touches[0]);
         diff.x = e.touches[0].clientX - start.x;
         diff.y = e.touches[0].clientY - start.y;
