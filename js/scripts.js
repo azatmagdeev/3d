@@ -4,7 +4,7 @@ canvas.height = window.innerHeight;
 const zero_button = document.getElementById('x');
 zero_button.addEventListener('click', () => {
     mesh.rotation.y = mesh.rotation.x = temp.x = temp.y = 0
-    renderer.render(scene,camera)
+    renderer.render(scene, camera)
 })
 
 const start = {};
@@ -23,6 +23,7 @@ function mouse_control(e) {
             window.addEventListener('mousemove', check_mouse_position);
             break;
         case 'touchstart':
+            e.preventDefault();
             start.x = e.touches[0].clientX;
             start.y = e.touches[0].clientY;
             window.addEventListener('touchmove', check_mouse_position);
@@ -33,13 +34,13 @@ function check_mouse_position(e) {
     diff.x = e.clientX - start.x;
     diff.y = e.clientY - start.y;
 
-    if(e.type === 'touchmove'){
+    if (e.type === 'touchmove') {
         e.preventDefault();
         console.log(e.touches[0]);
         diff.x = e.touches[0].clientX - start.x;
         diff.y = e.touches[0].clientY - start.y;
-        console.log('diff',diff)
-    };
+        console.log('diff', diff)
+    }
 
 
     mesh.rotation.y = temp.x + diff.x / 100;
@@ -71,7 +72,7 @@ camera.position.set(0, 0, 1000);
 const light = new THREE.AmbientLight(0xffffff);
 scene.add(light);
 
-const geometry = new THREE.CubeGeometry(250, 250, 250);
+const geometry = new THREE.SphereGeometry(250, 10, 10, 10);
 const material = new THREE.MeshBasicMaterial({
     color: 0xffffff,
     wireframe: false,
