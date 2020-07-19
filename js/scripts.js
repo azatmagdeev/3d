@@ -52,13 +52,11 @@ window.addEventListener('mouseup', () => {
     window.removeEventListener('mousemove', check_mouse_position);
     temp.x = mesh.rotation.y;
     temp.y = mesh.rotation.x;
-
 })
 window.addEventListener('touchend', () => {
     window.removeEventListener('touchmove', check_mouse_position);
     temp.x = mesh.rotation.y;
     temp.y = mesh.rotation.x;
-
 })
 
 const renderer = new THREE.WebGLRenderer({canvas: canvas});
@@ -72,7 +70,8 @@ camera.position.set(0, 0, 1000);
 const light = new THREE.AmbientLight(0xffffff);
 scene.add(light);
 
-const geometry = new THREE.SphereGeometry(250, 10, 10, 10);
+const geometry = new THREE.CubeGeometry(250, 250, 250, 1);
+// console.log(geometry.faces );
 const material = new THREE.MeshBasicMaterial({
     color: 0xffffff,
     wireframe: false,
@@ -81,8 +80,12 @@ const material = new THREE.MeshBasicMaterial({
 
 for (let i = 0; i < geometry.faces.length; i++) {
     geometry.faces[i].color.setRGB(Math.random(), Math.random(), Math.random())
-
 }
+
+geometry.faces[0].color = 'black';
+
+console.log(geometry.faces[0])
+console.log(geometry.faces[1])
 
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
