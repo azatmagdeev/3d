@@ -33,7 +33,7 @@ scene.add(light);
 const meshes = [];
 
 const objLoader = new THREE.OBJLoader();
-objLoader.load('model/supastarOBJ.obj', function (object) {
+objLoader.load('model/sneaker.obj', function (object) {
     console.log(object);
 
     object.traverse( function(child){
